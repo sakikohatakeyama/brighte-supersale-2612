@@ -393,7 +393,9 @@ footer .law{font-size:14px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
-.kanban{margin:0;line-height:0}
+.kanban{position:relative;overflow:hidden;margin:0;line-height:0}
+.kanban .snow{z-index:2}
+.kanban.is-off *{animation-play-state:paused!important}
 .kanban img{display:block;width:100%;height:auto}
 </style>
 </head>
@@ -403,7 +405,7 @@ footer .law{font-size:14px}
 <main class="page">
 
 <!-- ▼ FV: 支給の看板画像 -->
-<h1 class="kanban"><img src="images/kanban.jpg" alt="Brighte 楽天スーパーSALE 12/4(金)0:00〜12/11(金)1:59" width="1455" height="2000"></h1>
+<h1 class="kanban"><div class="snow" data-snow="26" aria-hidden="true"></div><img src="images/kanban.jpg" alt="Brighte 楽天スーパーSALE 12/4(金)0:00〜12/11(金)1:59" width="1455" height="2000"></h1>
 
 <!-- ▼ 旧FV(コードで組んだ看板・写真・日付)。看板画像に差し替えたため非表示 -->
 <div class="sky" hidden>
@@ -726,9 +728,9 @@ function setupOrnaments() {
 }
 
 function pauseOffscreen() {
-  const sky = document.querySelector(".sky");
-  if (!sky || !("IntersectionObserver" in window)) return;
-  new IntersectionObserver(([e]) => sky.classList.toggle("is-off", !e.isIntersecting)).observe(sky);
+  if (!("IntersectionObserver" in window)) return;
+  document.querySelectorAll(".sky, .kanban").forEach(el =>
+    new IntersectionObserver(([e]) => el.classList.toggle("is-off", !e.isIntersecting)).observe(el));
 }
 
 renderDeals();
@@ -736,6 +738,7 @@ applyCoupons();
 setupHeroFx();
 setupHeroGold();
 setupStars();
+setupSnow();
 setupOrnaments();
 pauseOffscreen();
 setupGlitter();
