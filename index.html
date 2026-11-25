@@ -393,6 +393,8 @@ footer .law{font-size:14px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+.kanban{margin:0;line-height:0}
+.kanban img{display:block;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -400,8 +402,11 @@ footer .law{font-size:14px}
 
 <main class="page">
 
-<!-- ▼ FV: 看板・写真・日付をひとつの夜空に -->
-<div class="sky">
+<!-- ▼ FV: 支給の看板画像 -->
+<h1 class="kanban"><img src="images/kanban.jpg" alt="Brighte 楽天スーパーSALE 12/4(水)0:00〜12/11(水)1:59" width="1497" height="2000"></h1>
+
+<!-- ▼ 旧FV(コードで組んだ看板・写真・日付)。看板画像に差し替えたため非表示 -->
+<div class="sky" hidden>
 <div class="stars" id="stars" aria-hidden="true"></div>
 <div class="orn orn-fv" data-orn="fv" aria-hidden="true"></div>
 
