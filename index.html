@@ -394,8 +394,7 @@ footer .law{font-size:14px}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 .kanban{position:relative;overflow:hidden;margin:0;line-height:0}
-.kanban .snow{z-index:2}
-.kanban.is-off *{animation-play-state:paused!important}
+.kanban-snow{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
 .kanban img{display:block;width:100%;height:auto}
 </style>
 </head>
@@ -405,7 +404,7 @@ footer .law{font-size:14px}
 <main class="page">
 
 <!-- ▼ FV: 支給の看板画像 -->
-<h1 class="kanban"><div class="snow" data-snow="26" aria-hidden="true"></div><img src="images/kanban.jpg" alt="Brighte 楽天スーパーSALE 12/4(金)0:00〜12/11(金)1:59" width="1455" height="2000"></h1>
+<h1 class="kanban"><canvas class="kanban-snow" id="kanbanSnow" aria-hidden="true"></canvas><img src="images/kanban.jpg" alt="Brighte 楽天スーパーSALE 12/4(金)0:00〜12/11(金)1:59" width="1455" height="2000"></h1>
 
 <!-- ▼ 旧FV(コードで組んだ看板・写真・日付)。看板画像に差し替えたため非表示 -->
 <div class="sky" hidden>
@@ -657,6 +656,42 @@ function setupHeroGold() {
   front.insertAdjacentHTML("beforeend", `<div class="grp grp-b">${dust(10)}</div>`);
 }
 
+/* 看板の雪: 小さな白い粒がゆっくり舞う(canvas)。画面外では止める */
+function setupKanbanSnow() {
+  const cv = document.getElementById("kanbanSnow");
+  if (!cv || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box = cv.parentElement, ctx = cv.getContext("2d");
+  let W = 0, H = 0, flakes = [], running = true;
+  const make = top => ({x: Math.random() * W, y: top ? -6 : Math.random() * H,
+    r: Math.random() * 2.2 + .6, s: Math.random() * .6 + .3, w: Math.random() * Math.PI * 2, a: Math.random() * .4 + .55});
+  function size() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = box.offsetWidth; H = box.offsetHeight;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(W * H / 2600);           /* 面積に合わせた粒の数(SPで約75) */
+    while (flakes.length < n) flakes.push(make(false));
+    flakes.length = n;
+  }
+  function loop() {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+    for (const f of flakes) {
+      f.y += f.s; f.w += .01; f.x += Math.sin(f.w) * .3;
+      if (f.y > H + 6) Object.assign(f, make(true));
+      ctx.globalAlpha = f.a; ctx.fillStyle = "#fff";
+      ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fill();
+    }
+    requestAnimationFrame(loop);
+  }
+  size();
+  addEventListener("resize", size);
+  box.querySelector("img").addEventListener("load", size);
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => {
+    const was = running; running = e.isIntersecting; if (running && !was) loop();
+  }).observe(box);
+  loop();
+}
+
 /* 雪の結晶(六角の枝つき)を data-snow の数だけ降らせる。位置は固定の乱数 */
 function setupSnow() {
   const arm = "M0 0V-17M0-11l-5-5M0-11l5-5M0-5l-3.5-3.5M0-5l3.5-3.5";
@@ -729,7 +764,7 @@ function setupOrnaments() {
 
 function pauseOffscreen() {
   if (!("IntersectionObserver" in window)) return;
-  document.querySelectorAll(".sky, .kanban").forEach(el =>
+  document.querySelectorAll(".sky").forEach(el =>
     new IntersectionObserver(([e]) => el.classList.toggle("is-off", !e.isIntersecting)).observe(el));
 }
 
@@ -738,7 +773,7 @@ applyCoupons();
 setupHeroFx();
 setupHeroGold();
 setupStars();
-setupSnow();
+setupKanbanSnow();
 setupOrnaments();
 pauseOffscreen();
 setupGlitter();
