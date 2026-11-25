@@ -263,10 +263,9 @@ footer .law{font-size:14px}
 /* FVはひとつの夜空: 上は星の濃紺、下へ赤いリボンの光、日付まで同じ空に収める */
 .sky{position:relative;overflow:hidden;background:
   radial-gradient(1.2px 1.2px at 12% 6%,#fff 60%,transparent),radial-gradient(1px 1px at 28% 24%,#fff 60%,transparent),radial-gradient(1.4px 1.4px at 46% 3%,#fff 60%,transparent),radial-gradient(1px 1px at 63% 19%,#fff 60%,transparent),radial-gradient(1.3px 1.3px at 81% 8%,#fff 60%,transparent),radial-gradient(1px 1px at 92% 27%,#fff 60%,transparent),radial-gradient(1px 1px at 6% 33%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 88% 92%,#fff 60%,transparent),radial-gradient(1px 1px at 10% 95%,#fff 60%,transparent),
-  radial-gradient(70% 22% at 50% 0,#0c1650,transparent 75%),
-  radial-gradient(45% 20% at 50% 54%,rgba(255,206,92,.16),transparent 72%),
-  radial-gradient(90% 26% at 50% 80%,rgba(211,20,47,.3),transparent 72%),
-  linear-gradient(#050a24 0%,#070f34 45%,#080e30 75%,#050a22 100%)}
+  radial-gradient(48% 22% at 50% 56%,rgba(255,190,110,.2),transparent 72%),
+  radial-gradient(95% 34% at 50% 58%,rgba(196,18,44,.6),transparent 76%),
+  linear-gradient(#0b0a2c 0%,#2a0a2a 20%,#5c0b22 42%,#7c0d24 62%,#4a0a1e 80%,#16081f 92%,#050a22 100%)}
 .sky .neon-top,.sky .hero,.sky .fv.is-short,.sky .hero+.fv{background:none}
 .sky .hero::after{opacity:.7}
 .sky>.snow{z-index:3}
@@ -630,9 +629,11 @@ function setupHeroGold() {
     </defs>
     <g fill="none" stroke-linecap="round">
       <path class="rb-sh" d="M-20 470C230 360 470 470 1020 170" stroke="#6e0816" stroke-width="64"/>
+      <path d="M-20 460C230 350 470 460 1020 160" stroke="#f0c860" stroke-width="58"/>
       <path d="M-20 460C230 350 470 460 1020 160" stroke="url(#rb)" stroke-width="54"/>
       <path d="M-20 446C230 336 470 446 1020 146" stroke="#ff8a96" stroke-width="3" opacity=".7"/>
-      <path d="M0 560C300 470 560 505 1000 300" stroke="url(#rb)" stroke-width="22" opacity=".85"/>
+      <path d="M0 560C300 470 560 505 1000 300" stroke="#f0c860" stroke-width="25"/>
+      <path d="M0 560C300 470 560 505 1000 300" stroke="url(#rb)" stroke-width="22"/>
       <path d="M0 520C260 420 520 470 1000 220" stroke="url(#rbg)" stroke-width="2"/>
     </g></svg>`;
   const bokeh = Array.from({length: 12}, () => {
