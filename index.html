@@ -669,7 +669,7 @@ function setupKanbanSnow() {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     W = box.offsetWidth; H = box.offsetHeight;
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(W * H / 4300);           /* 面積に合わせた粒の数(SPで約45) */
+    const n = Math.round(W * H / 6000);           /* 面積に合わせた粒の数(SPで約32) */
     while (flakes.length < n) flakes.push(make(false));
     flakes.length = n;
   }
