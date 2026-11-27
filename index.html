@@ -427,7 +427,7 @@ footer .law{font-size:14px}
 <main class="page">
 
 <!-- ▼ FV: 支給の看板画像 -->
-<h1 class="kanban"><small class="kanban-note">※予告なくサービス内容を変更させていただく場合がございます。</small><canvas class="kanban-snow" id="kanbanSnow" aria-hidden="true"></canvas><img src="images/kanban.jpg?v=261125b" alt="Brighte 楽天スーパーSALE 12/4(金)20:00〜12/11(金)1:59" width="1400" height="1870"></h1>
+<h1 class="kanban"><small class="kanban-note">※予告なくサービス内容を変更させていただく場合がございます。</small><canvas class="kanban-snow" id="kanbanSnow" aria-hidden="true"></canvas><img src="images/kanban.jpg?v=261127c" alt="Brighte 楽天スーパーSALE 12/3(木)20:00〜12/11(金)9:59" width="1400" height="1871"></h1>
 
 <!-- ▼ 旧FV(コードで組んだ看板・写真・日付)。看板画像に差し替えたため非表示 -->
 <div class="sky" hidden>
@@ -467,7 +467,7 @@ footer .law{font-size:14px}
 <!-- ▼ 期間 -->
 <header class="fv is-short">
   <div class="glitter" id="glitter" aria-hidden="true"></div>
-  <p class="period"><span><b>12/4</b>(金) 20:00</span><i>〜</i><span><b>12/11</b>(金) 1:59</span></p>
+  <p class="period"><span><b>12/3</b>(木) 20:00</span><i>〜</i><span><b>12/11</b>(金) 9:59</span></p>
 </header>
 </div>
 
@@ -518,7 +518,7 @@ footer .law{font-size:14px}
   <div class="orn orn-rail" data-orn="l" aria-hidden="true"></div>
   <img class="rail-logo" src="images/logo-w.png" alt="Brighte" width="590" height="127">
   <p class="rail-sign"><span class="rs-1">Rakuten<i>スーパー</i></span><span class="rs-2">SALE</span></p>
-  <p class="rail-period"><b>12/4</b>(金) 20:00 〜<br><b>12/11</b>(金) 1:59</p>
+  <p class="rail-period"><b>12/3</b>(木) 20:00 〜<br><b>12/11</b>(金) 9:59</p>
   <div class="countdown" id="countdown" aria-live="off"><small id="cdLabel">開始まで</small><p id="cdTime"></p></div>
 </aside>
 <aside class="rail rail-r" aria-label="ページ案内">
@@ -619,8 +619,8 @@ function setupNav() {
 }
 
 /* カウントダウン: 開始前は「開始まで」、期間中は「終了まで」 */
-const SALE_START = Date.parse("2026-12-04T20:00:00+09:00");
-const SALE_END = Date.parse("2026-12-11T02:00:00+09:00");
+const SALE_START = Date.parse("2026-12-03T20:00:00+09:00");
+const SALE_END = Date.parse("2026-12-11T10:00:00+09:00");
 function setupCountdown() {
   const box = document.getElementById("countdown");
   const label = document.getElementById("cdLabel");
