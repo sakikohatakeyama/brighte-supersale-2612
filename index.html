@@ -533,19 +533,20 @@ footer .law{font-size:14px}
 /* ▼ 編集箇所 ───────────────────────────
    banner : クーポンバナー画像。null なら商品写真だけを表示(スーパーSALEのクーポン内容が決まるまで)
    coupon : クーポン獲得URL。"#" の間はボタンを押せないだけ(文言はそのまま)
-   cpText : ボタンの文言 */
+   cpText : ボタンの文言
+   img    : クーポン欄の商品写真 / lineup : 下の4商品一覧の写真 */
 const ITEMS = [
   {id:"item1", cat:"リフト美顔器", name:"ELEKI LIFT", kana:"エレキリフト", tab:"ELEKI<br>LIFT",
-   img:"lift-blue.webp?v=band", banner:null, note:"",
+   img:"lift-blue.webp?v=band", lineup:"lift.webp", banner:null, note:"",
    off:"38,054", cpText:"38,054円OFFクーポン獲得", coupon:"https://coupon.rakuten.co.jp/getCoupon?getkey=MjZPMC00TDlKLUhCMUotQVgyMw--&rt=&rd=https://item.rakuten.co.jp/brighte-onlineshop/brt-fl170/", url:"https://item.rakuten.co.jp/brighte-onlineshop/brt-fl170/"},
   {id:"item2", cat:"ブラシ型美顔器", name:"ELEKI BRUSH＋", title:"ELEKI <span class=\"nw\">BRUSH＋</span>", kana:"エレキブラシプラス", tab:"ELEKI<br>BRUSH＋",
-   img:"brush-pink.webp?v=band", banner:null, note:"",
+   img:"brush-pink.webp?v=band", lineup:"brush.webp", banner:null, note:"",
    off:"8,634", cpText:"8,634円OFFクーポン獲得", coupon:"https://coupon.rakuten.co.jp/getCoupon?getkey=OUIyRi1CVVdFLUUyRVgtUUFTUw--&rt=&rd=https://item.rakuten.co.jp/brighte-onlineshop/brt-fs145/", url:"https://item.rakuten.co.jp/brighte-onlineshop/brt-fs145/"},
   {id:"item3", cat:"ドライヤー", name:"SHOWER DRYER", kana:"シャワードライヤー", tab:"SHOWER<br>DRYER",
-   img:"dryer-white.webp?v=band", banner:null, note:"",
+   img:"dryer-white.webp?v=band", lineup:"dryer.webp", banner:null, note:"",
    off:"7,718", cpText:"7,718円OFFクーポン獲得", coupon:"https://coupon.rakuten.co.jp/getCoupon?getkey=SkFCTC01QklDLVhNVlYtRVZPQQ--&rt=&rd=https://item.rakuten.co.jp/brighte-onlineshop/brt-sd173/", url:"https://item.rakuten.co.jp/brighte-onlineshop/brt-sd173/"},
   {id:"item4", cat:"ストレートアイロン", name:"3D SILK STRAIGHT IRON", long:true, kana:"3D シルクストレートアイロン", tab:"3D SILK<br>IRON",
-   img:"iron-white.webp?v=band", banner:null, note:"",
+   img:"iron-white.webp?v=band", lineup:"iron.webp", banner:null, note:"",
    off:"3,819", cpText:"3,819円OFFクーポン獲得", coupon:"https://coupon.rakuten.co.jp/getCoupon?getkey=OVUySC1FT05aLVNSUE8tWlJUUw--&rt=&rd=https://item.rakuten.co.jp/brighte-onlineshop/brt-3d138/", url:"https://item.rakuten.co.jp/brighte-onlineshop/brt-3d138/"}
 ];
 /* ▲ 編集箇所 ─────────────────────────── */
@@ -583,7 +584,7 @@ function renderDeals() {
     </article>`).join("");
 
   document.getElementById("fvGrid").innerHTML = ITEMS.map(it =>
-    `<a href="${it.url}"><img src="images/${it.img}" alt="${it.name} ${it.kana}の商品ページへ" width="1000" height="1000" loading="lazy"></a>`).join("");
+    `<a href="${it.url}"><img src="images/${it.lineup || it.img}" alt="${it.name} ${it.kana}の商品ページへ" width="1000" height="1000" loading="lazy"></a>`).join("");
   document.getElementById("railNav").innerHTML = ITEMS.map((it, i) =>
     `<li><a href="#${it.id}" data-nav="${it.id}"><span><b>${it.name}</b><small>${it.off}円OFFクーポン</small></span><em>${i + 1}</em></a></li>`).join("");
   document.getElementById("tabbar").innerHTML = ITEMS.map(it =>
