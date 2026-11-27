@@ -395,14 +395,15 @@ footer .law{font-size:14px}
 }
 /* 先着特典: キャンドル特別セット */
 .gift{position:relative;padding:44px var(--gut-r) 48px var(--gut-l);text-align:center;background:radial-gradient(70% 38% at 50% 52%,rgba(255,196,96,.16),transparent 72%),linear-gradient(#070d2c,#0a1036 50%,#070d2c);border-top:1px solid rgba(232,178,46,.35)}
-.gift-badge{display:flex;align-items:baseline;justify-content:center;gap:.25em;width:fit-content;margin:0 auto;padding:8px clamp(30px,8vw,44px) 9px;color:#fff;font-size:clamp(17px,4.8vw,22px);font-weight:700;letter-spacing:.08em;line-height:1.2;background:linear-gradient(#e2253e,#b30e27 55%,#8e0a1f);clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%,14px 50%)}
-.gift-badge b{font:600 1.7em/1 var(--num);letter-spacing:.01em;color:#ffe39a}
-.gift-head{display:grid;margin:18px 0 0;font-size:min(9.6vw,46px);font-weight:900;line-height:1.25;letter-spacing:.1em;color:#fff}
+.gift-badge{display:flex;align-items:baseline;justify-content:center;gap:.2em;width:fit-content;margin:0 auto;padding:10px clamp(34px,9vw,54px) 12px;color:#fff;font-size:clamp(24px,6.6vw,34px);font-weight:700;letter-spacing:.08em;line-height:1.2;background:linear-gradient(#e2253e,#b30e27 55%,#8e0a1f);clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%,18px 50%)}
+.gift-badge b{font:600 1.85em/1 var(--num);letter-spacing:.01em;color:#ffe39a}
+.gift-head{display:grid;margin:20px 0 0;font-size:min(8.2vw,44px);font-weight:900;line-height:1.25;letter-spacing:.06em;color:#fff}
+.gift-head .nw{white-space:nowrap}
 .gift-head small{margin-bottom:6px;font-size:clamp(14px,3.8vw,17px);font-weight:500;letter-spacing:.16em;color:#ffe39a}
 .gift-scent{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 0;font-size:clamp(16px,4.4vw,19px);font-weight:500;letter-spacing:.2em;color:var(--gold);background:var(--g-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .gift-scent::before,.gift-scent::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,#e8b22e)}
 .gift-scent::after{transform:scaleX(-1)}
-.gift-ph{position:relative;width:min(56%,280px);margin:24px auto 0}
+.gift-ph{position:relative;width:min(40%,210px);margin:24px auto 0}
 .gift-ph::before{content:"";position:absolute;inset:-14% -30% -6%;background:radial-gradient(closest-side,rgba(255,205,110,.42),rgba(255,170,60,.12) 60%,transparent);animation:glow 3.6s ease-in-out infinite alternate}
 .gift-ph img{position:relative;width:100%;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55))}
 @keyframes glow{from{opacity:.65;transform:scale(.96)}to{opacity:1;transform:scale(1.04)}}
@@ -473,9 +474,9 @@ footer .law{font-size:14px}
 <!-- ▼ 先着特典: オリジナルキャンドル特別セット(ブラシ・リフト・ドライヤー) -->
 <section class="gift" aria-labelledby="giftHead">
   <p class="gift-badge"><span>先着</span><b>2,500</b><span>名様</span></p>
-  <h2 class="gift-head" id="giftHead"><small>Brighte オリジナル</small>キャンドル<br>特別セット</h2>
+  <h2 class="gift-head" id="giftHead"><small>Brighte オリジナル</small><span class="nw">キャンドル特別セット</span></h2>
   <p class="gift-scent">シャルドネの香り</p>
-  <div class="gift-ph"><img src="images/candle.webp" alt="Brighteオリジナルキャンドル(月と猫のネイビーのグラス)" width="640" height="892" loading="lazy"></div>
+  <div class="gift-ph"><img src="images/candle.webp?v=2" alt="Brighteオリジナルキャンドル(月と猫のネイビーのグラス)" width="560" height="780" loading="lazy"></div>
   <p class="gift-for">対象商品</p>
   <ul class="gift-items">
     <li><a href="https://item.rakuten.co.jp/brighte-onlineshop/brt-fs145/"><img src="images/brush.webp" alt="ELEKI BRUSH＋" width="1000" height="1000" loading="lazy"></a></li>
